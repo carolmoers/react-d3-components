@@ -5,6 +5,7 @@ let Chart = require('./Chart');
 let Axis = require('./Axis');
 let Bar = require('./Bar');
 let Tooltip = require('./Tooltip');
+let Legend = require('./Legend');
 
 let DefaultPropsMixin = require('./DefaultPropsMixin');
 let HeightWidthMixin = require('./HeightWidthMixin');
@@ -153,40 +154,45 @@ let BarChart = React.createClass({
                 <div>
                 <Chart height={height} width={width} margin={margin}>
                 <DataSet
-            data={data}
-            xScale={xScale}
-            yScale={yScale}
-            colorScale={colorScale}
-            values={values}
-            label={label}
-            y={y}
-            y0={y0}
-            x={x}
-            onMouseEnter={this.onMouseEnter}
-            onMouseLeave={this.onMouseLeave}
-            groupedBars={groupedBars}
+                  data={data}
+                  xScale={xScale}
+                  yScale={yScale}
+                  colorScale={colorScale}
+                  values={values}
+                  label={label}
+                  y={y}
+                  y0={y0}
+                  x={x}
+                  onMouseEnter={this.onMouseEnter}
+                  onMouseLeave={this.onMouseLeave}
+                  groupedBars={groupedBars}
                 />
 
                 <Axis
-            className={"x axis"}
-            orientation={"bottom"}
-            scale={xScale}
-            height={innerHeight}
-            width={innerWidth}
-            {...xAxis}
+                  className={"x axis"}
+                  orientation={"bottom"}
+                  scale={xScale}
+                  height={innerHeight}
+                  width={innerWidth}
+                  {...xAxis}
                 />
 
                 <Axis
-            className={"y axis"}
-            orientation={"left"}
-            scale={yScale}
-            height={innerHeight}
-            width={innerWidth}
-            {...yAxis}
+                  className={"y axis"}
+                  orientation={"left"}
+                  scale={yScale}
+                  height={innerHeight}
+                  width={innerWidth}
+                  {...yAxis}
                 />
                 { this.props.children }
+                <Legend
+                  colors={colorScale}
+                  data={data}
+                  margins={margin}
+                  width={90}
+                />
                 </Chart>
-
                 <Tooltip {...this.state.tooltip}/>
                 </div>
         );
